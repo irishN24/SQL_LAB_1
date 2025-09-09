@@ -1,0 +1,38 @@
+/*+1 Найти все записи, у которых FIRST_NAME имеет в середине букву ‘e’ и заканчивается на "n".
++2. Выведите информацию о сотрудниках: имена, фамилии, manager_id, номер телефона, почту, зарплату, которая меньше 25000. Отсортируйте по зарплате от большего к меньшему. 
++3. Вывести фамилии и имена работников, у которых в имени буква “l” встречается дважды и присутствует буква “a”, или у которых в почтовом адресе присутствует символ “_”.
++4, Вывести фамилии и дату найма служащих, которые были приняты на работу в 1997-2000 годах, отсортируйте по фамилии в прямом порядке.
++5. Найти всех сотрудников, у которых есть удвоенная буква «о» в имени или фамилии. Применить разные способы для двух частей условия.
++6. Выбрать уникальные идентификаторы менеджеров, подчиненые которых трудоустроены ранее начала 1997 года и и не имеют номера телефона. Вывести только идентификаторы менеджеров отсортированные по убыванию.
+7. Для операторов, которые не использовались, запрос(ы)придумать самим. IN, NOT и др*/
+--1
+/*SELECT *
+FROM employees
+WHERE first_name Like '%_e_%' AND first_name LIKE '%n';*/
+
+--2
+/*SELECT first_name, last_name, manager_id, phone_number, email, salary
+from employees
+where salary < 25000
+ORDER BY salary DESC;*/
+--3
+/*SELECT last_name, first_name, email
+FROM employees
+WHERE (first_name LIKE '%l%l%') AND (first_name Like '%a%') OR (email Like '%\_%' ESCAPE '\');*/
+
+--4
+/*SELECT last_name, hire_date
+FROM employees
+WHERE hire_date >= '01-01-1997' And hire_date < '01-01-2001'
+ORDER BY last_name*/
+
+--5
+/*SELECT first_name, last_name
+FROM employees
+WHERE first_name LIKE '%oo%' OR last_name SIMILAR TO '%oo%';*/
+
+--6
+/*SELECT manager_id 
+FROM employees
+WHERE hire_date < '01-01-1997' AND phone_number is NULL
+ORDER BY manager_id DESC;*/
