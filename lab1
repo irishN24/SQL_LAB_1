@@ -42,3 +42,8 @@ WHERE employee_id IN (
     AND manager_id IS NOT NULL
 )
 ORDER BY manager_id DESC;*/
+--7
+/*SELECT *
+FROM employees
+WHERE job_id = 10
+ORDER By last_name;*/
