@@ -32,7 +32,13 @@ FROM employees
 WHERE first_name LIKE '%oo%' OR last_name SIMILAR TO '%oo%';*/
 
 --6
-/*SELECT manager_id 
+/*SELECT DISTINCT manager_id
 FROM employees
-WHERE hire_date < '01-01-1997' AND phone_number is NULL
+WHERE employee_id IN (
+    SELECT employee_id 
+    FROM employees 
+    WHERE hire_date < '1997-01-01' 
+    AND phone_number IS NULL
+    AND manager_id IS NOT NULL
+)
 ORDER BY manager_id DESC;*/
